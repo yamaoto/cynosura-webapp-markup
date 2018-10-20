@@ -1,3 +1,47 @@
-<p>
-  front-home works!
-</p>
+<div>
+  <section class="header screen" [ngStyle]="{'background-image': 'url(' + giphyCurrent + ')'}">
+    <div class="container">
+      <h2 class="title">Cynosura WebApp Template</h2>
+      <a class="button button-primary" (click)="scrollToElement(secondScreen)">Continue</a>
+    </div>
+  </section>
+  <section class="screen steps" #secondScreen>
+    <div class="container">
+      <div class="value-props row first-description">
+        <div class="four columns value-prop">
+          <span class="mark">1</span>
+          Open <a [routerLink]="'/application'">Application page</a>
+        </div>
+        <div class="four columns value-prop">
+          <span class="mark">2</span>
+          Manage your entities.
+        </div>
+        <div class="four columns value-prop">
+          <span class="mark">3</span>
+          Manage your business processes.
+        </div>        
+      </div>
+      <div class="delete">          
+          <h3>And then, delete this page</h3>
+        </div>
+    </div>
+  </section>
+  <section class="footer">
+    <div class="logo-wrap">
+      <img alt="logo" />
+    </div>
+    <div>
+      <ul>
+        <li>
+          Participate on <a href="https://github.com/yamaoto/cynosura-webapp-markup">Template Markup</a>
+        </li>
+        <li>
+          Participate on <a href="https://aeb-it.visualstudio.com/Cynosura">Cinosura project</a>
+        </li>
+        <li>
+          MIT License
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

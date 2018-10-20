@@ -42,6 +42,11 @@
                 "input": "node_modules/primeicons/primeicons.css",
                 "bundleName": "primeng",
                 "lazy": true
+              },
+              {
+                "input": "node_modules/skeleton-css/css/skeleton.css",
+                "bundleName": "skeleton",
+                "lazy": true
               }
             ],
             "scripts": []
