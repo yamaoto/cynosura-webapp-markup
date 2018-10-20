@@ -1,0 +1,76 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "codelyzer"
+    ],
+    "jsRules": {},
+    "rules": {
+        "max-line-length": {
+            "options": [
+                200
+            ]
+        },
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "ordered-imports": false,
+        "object-literal-sort-keys": false,
+        "no-trailing-whitespace": true,
+        "member-access": false,
+        "trailing-comma": [
+            true,
+            "always"
+        ],
+        "object-literal-shorthand": false,
+        "no-empty": false,
+        "no-console": false,
+        "triple-equals": true,
+        "no-angle-bracket-type-assertion": false,
+        "interface-name": false,
+        "forin": false,
+        "angular-whitespace": [
+            true,
+            "check-interpolation",
+            "check-pipe",
+            "check-semicolon"
+        ],
+        "banana-in-box": true,
+        "templates-no-negated-async": true,
+        "directive-selector": [
+            true,
+            "attribute",
+            "app",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "app",
+            "kebab-case"
+        ],
+        "pipe-naming": [
+            true,
+            "camelCase",
+            "app"
+        ],
+        "use-input-property-decorator": true,
+        "use-output-property-decorator": true,
+        "use-host-property-decorator": true,
+        "use-view-encapsulation": true,
+        "no-attribute-parameter-decorator": true,
+        "no-input-rename": true,
+        "no-output-rename": true,
+        "no-forward-ref": true,
+        "use-life-cycle-interface": true,
+        "use-pipe-transform-interface": true,
+        "component-class-suffix": true,
+        "directive-class-suffix": true,
+        "templates-use-public": true,
+        "no-access-missing-member": true,
+        "invoke-injectable": true,
+        "template-to-ng-template": true
+    },
+    "rulesDirectory": []
+}
