@@ -8,5 +8,12 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((error) => {
+    console.log('angular bootstrap error', error);
+    const div = document.createElement('div');
+    div.innerText = error.toString();
+    div.className = 'angular-bootstrap-error';
+    document.body.appendChild(div);
+  });

@@ -4,6 +4,11 @@
         "tslint:recommended",
         "codelyzer"
     ],
+    "linterOptions": {
+        "exclude": [
+            ".src/polyfills.ts"
+        ]
+    },
     "jsRules": {},
     "rules": {
         "max-line-length": {
@@ -50,11 +55,6 @@
             "app",
             "kebab-case"
         ],
-        "pipe-naming": [
-            true,
-            "camelCase",
-            "app"
-        ],
         "use-input-property-decorator": true,
         "use-output-property-decorator": true,
         "use-host-property-decorator": true,
@@ -66,11 +66,7 @@
         "use-life-cycle-interface": true,
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,
-        "directive-class-suffix": true,
-        "templates-use-public": true,
-        "no-access-missing-member": true,
-        "invoke-injectable": true,
-        "template-to-ng-template": true
+        "directive-class-suffix": true
     },
     "rulesDirectory": []
 }

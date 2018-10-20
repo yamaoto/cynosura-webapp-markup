@@ -1,4 +1,13 @@
-<app-main-menu></app-main-menu>
 <div>
+  <nav>
+    <ul>
+      <li>
+        <a [routerLink]="['/']">Front</a>
+      </li>
+      <li>
+        <a [routerLink]="['application']">Application</a>
+      </li>
+    </ul>
+  </nav>
   <router-outlet></router-outlet>
 </div>

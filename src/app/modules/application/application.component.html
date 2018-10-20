@@ -1,0 +1,9 @@
+<div class="top-wrap">
+  <div *ngIf="!loading">
+    <app-main-menu></app-main-menu>
+    <router-outlet name="application"></router-outlet>
+  </div>
+  <div *ngIf="loading">
+    loading...
+  </div>
+</div>
