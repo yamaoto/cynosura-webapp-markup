@@ -8,6 +8,7 @@ import { PanelMenuModule } from 'primeng/primeng';
 import { ApplicationRoutingModule } from './application-routing.module';
 import { ApplicationComponent } from './application.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainWrapComponent } from './components/main-wrap/main-wrap.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -24,6 +25,7 @@ import { OverviewModule } from './pages/overview/module';
   declarations: [
     ApplicationComponent,
     MainMenuComponent,
+    SideMenuComponent,
     HeaderComponent,
     MainWrapComponent,
     FooterComponent,
