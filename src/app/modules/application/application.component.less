@@ -1,3 +1,5 @@
+@import (css) url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,700&subset=cyrillic');
+
 /* PrimeNG */
 @import 'primeng/resources/themes/omega/theme.css';
 @import 'primeng/resources/primeng.min.css';
@@ -9,9 +11,34 @@ div, body, html {
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
 }
+
+.top-wrap {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+}
+
+.normal-text {
+    font-weight: 400;
+}
+
+.bold-text {
+    font-weight: 500;
+}
+
+.bolder-text {
+    font-weight: 700;
+}
+
+b {
+    .bold-text();
+}
+
 img {
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
