@@ -24,7 +24,6 @@ export class FrontHomeComponent implements OnInit, AfterViewInit {
   }
 
   scrollToElement($element): void {
-    console.log($element);
     $element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
