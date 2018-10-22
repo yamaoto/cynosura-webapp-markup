@@ -1,0 +1,45 @@
+@import '../../theme/theme.less';
+
+.main-wrap-wrapper {
+    background-color: @wrap-bg;
+    color: @wrap-fg;
+}
+
+.main-wrap {
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: @wrap-bg;
+    color: @wrap-fg;
+}
+
+.main-inner-wrap {
+    max-width: @content-max;
+    margin: 0 auto;
+    position: relative;
+    background-color: @inner-bg;
+    color: @inner-fg;
+}
+
+.router-wrap {
+    width: ~"calc(100% - @{menu-width})";
+    position: relative;
+    top: 0;
+    left: @menu-width;
+    background-color: @router-bg;
+    color: @router-fg;
+}
+
+.menu-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @menu-width;
+}
+
+.sticky {
+    // position: sticky;
+    position: fixed;
+}
+.end-sticky {
+    position: absolute;
+}

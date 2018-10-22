@@ -8,16 +8,26 @@ import { PanelMenuModule } from 'primeng/primeng';
 import { ApplicationRoutingModule } from './application-routing.module';
 import { ApplicationComponent } from './application.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MainWrapComponent } from './components/main-wrap/main-wrap.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { OverviewModule } from './pages/overview/module';
 
 @NgModule({
   imports: [
     CommonModule,
     ApplicationRoutingModule,
-    PanelMenuModule
+    PanelMenuModule,
+    OverviewModule
   ],
   declarations: [
     ApplicationComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    HeaderComponent,
+    MainWrapComponent,
+    FooterComponent,
+    LoginComponent
   ]
 })
 export class ApplicationModule { }
