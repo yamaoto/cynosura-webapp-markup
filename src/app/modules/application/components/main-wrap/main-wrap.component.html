@@ -5,7 +5,7 @@
     <div class="main-wrap">
         <div class="main-inner-wrap" #inner>
             <div class="menu-wrap" #menu [ngClass]="{'sticky': sticky, 'end-sticky': endSticky}" [ngStyle]="{'left': sticky?inner.offsetLeft + 'px':undefined, 'top': endSticky? endStickyY + 'px': undefined}">
-                <app-main-menu></app-main-menu>
+                <app-side-menu></app-side-menu>
             </div>
             <div class="router-wrap">
                 <router-outlet name="page"></router-outlet>

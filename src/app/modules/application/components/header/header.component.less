@@ -31,17 +31,6 @@
     margin: 0;
     padding: 0;
 }
-.header-wrap li {
-    padding-right: 3rem;
-}
-
-.header-wrap li:last-of-type {
-    padding-right: 0;
-}
-
-.header-wrap li {
-    display: inline-block;
-}
 
 .header-wrap .account {
     flex: none !important;
@@ -62,4 +51,15 @@
     height: @logo-height;
     background-color: @theme-cyan;
     display: block;
+}
+
+.header-wrap a, .header-wrap a:visited {
+    color: @main-menu-fg;
+}
+.header-wrap a {
+    text-decoration: none;
+}
+
+.header-wrap a:hover {
+    text-decoration: none;    
 }
