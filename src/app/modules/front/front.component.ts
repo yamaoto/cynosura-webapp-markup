@@ -1,48 +1,67 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { NgcCookieConsentService } from 'ngx-cookieconsent';
 
 @Component({
   selector: 'app-front',
   templateUrl: './front.component.html',
   styleUrls: ['./front.component.less']
 })
-export class FrontComponent implements OnInit, OnDestroy {
+export class FrontComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  styleId = 'front-style';
   loading = true;
 
-  constructor() { }
+  load: { [k: string]: string };
+  constructor(
+    private cookieConsentService: NgcCookieConsentService
+  ) { }
 
   ngOnInit() {
-    this.loadStyles();
+    this.load = {
+      skeleton: 'skeleton-bundle',
+      // cookieconsent: 'cookieconsent-bundle'
+    };
+    console.log('this.cookieConsentService', this.cookieConsentService);
+  }
+
+  ngAfterViewInit(): void {
+    const items = Object.keys(this.load).map((bundle) => this.loadStyles(bundle, this.load[bundle]));
+    Promise.all(items)
+      .then(() => {
+        // setTimeout(() => this.cookieConsentService.init(this.cookieConsentService.getConfig()), 1);
+      })
+      .catch((error) => console.log('error', error))
+      .finally(() => this.loading = false);
+
   }
 
   ngOnDestroy(): void {
-    this.destroyStyles();
+    Object.values(this.load).map((id) => this.destroyStyles(id));
   }
 
   /**
    * loading preconfigured bundle with skeleton styles
    * for front only
    */
-  loadStyles() {
-    const skeletonBundle = 'skeleton';
-    if (!document.getElementById(this.styleId)) {
-      const script = document.createElement('script');
-      script.id = this.styleId;
-      script.src = `/${skeletonBundle}.js`;
-      script.onload =
-        () => this.loading = false;
-      document.head.appendChild(script);
-    } else {
-      this.loading = false;
-    }
+  loadStyles(bundle: string, id: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (!document.getElementById(id)) {
+        const script = document.createElement('script');
+        script.id = id;
+        script.src = `/${bundle}.js`;
+        script.onload =
+          () => resolve();
+        document.head.appendChild(script);
+      } else {
+        resolve();
+      }
+    });
   }
 
   /**
    * remove primeng styles
    */
-  destroyStyles() {
-    const script = document.getElementById(this.styleId);
+  destroyStyles(id) {
+    const script = document.getElementById(id);
     if (script) {
       document.head.removeChild(script);
     }
