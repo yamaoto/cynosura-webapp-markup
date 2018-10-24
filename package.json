@@ -23,7 +23,9 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "axios": "^0.18.0",
+    "cookieconsent": "^3.1.0",
     "core-js": "^2.5.4",
+    "ngx-cookieconsent": "^2.0.0",
     "rxjs": "~6.3.3",
     "skeleton-css": "^2.0.4",
     "zone.js": "~0.8.26"
