@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { OverviewComponent } from './overview.component';
 
 export const routes: Routes = [
@@ -9,9 +8,3 @@ export const routes: Routes = [
     outlet: 'page'
   }
 ];
-
-// @NgModule({
-//   imports: [RouterModule.forChild(routes)],
-//   exports: [RouterModule]
-// })
-// export class OverviewRoutingModule { }

@@ -21,15 +21,15 @@ export class ApplicationComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * loading preconfigured bundle with primeng styles
+   * loading preconfigured bundle with material styles
    * for application only
    */
   loadStyles() {
-    const primengBundle = 'primeng';
+    const materialBundle = 'material';
     if (!document.getElementById(this.styleId)) {
       const script = document.createElement('script');
       script.id = this.styleId;
-      script.src = `/${primengBundle}.js`;
+      script.src = `/${materialBundle}.js`;
       script.onload =
         () => this.loading = false;
       document.head.appendChild(script);
@@ -39,7 +39,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * remove primeng styles
+   * remove material styles
    */
   destroyStyles() {
     const script = document.getElementById(this.styleId);

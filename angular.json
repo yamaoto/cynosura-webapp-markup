@@ -29,18 +29,8 @@
             "styles": [
               "src/styles.less",
               {
-                "input": "node_modules/primeng/resources/themes/omega/theme.css",
-                "bundleName": "primeng",
-                "lazy": true
-              },
-              {
-                "input": "node_modules/primeng/resources/primeng.min.css",
-                "bundleName": "primeng",
-                "lazy": true
-              },
-              {
-                "input": "node_modules/primeicons/primeicons.css",
-                "bundleName": "primeng",
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                "bundleName": "material",
                 "lazy": true
               },
               {

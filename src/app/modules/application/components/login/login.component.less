@@ -1,0 +1,75 @@
+@import '../../theme/theme.less';
+@width: 300px;
+
+@logo-size: 100px;
+
+.login-wrap {
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.2rem;
+    background-color: @login-wrap-bg;
+    padding-top: ~"calc((100vh/2) - 250px - @{logo-size})"
+}
+.login-inner {
+    width: ~"calc(@{width} + 20px)";
+    margin: 0 auto;
+    background-color: @login-inner-bg;
+    color: @login-inner-fg;
+    padding-top: 20px;
+}
+.login-inner-wrap {
+    padding: 20px;
+}
+.logo-wrap {
+    text-align: center;
+    padding-top: 50px;
+}
+.logo {
+    width: @logo-size;
+    height: @logo-size;
+    display: inline-block;
+}
+.forgot-password {
+    width: ~"calc(@{width} + 20px)";
+    margin: 0 auto;
+    text-align: right;
+    font-size: .9rem;
+    text-decoration: underline;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.login-inner .form > .item {
+    padding-bottom: 20px;
+}
+.logo-wrap .name {
+    font-size: 2rem;
+}
+.login-inner .form > .item label:after {
+    content: ':';
+}
+
+.login-inner .form > .item > * 
+{
+    width: 100%;
+}
+.login-inner .form > .item,
+.login-inner .form input,
+{
+    width: 100%;
+    color: @login-inner-fg;
+}
+
+h2 {
+    text-align: center;
+    border-left: solid 4px @login-inner-fg;
+}
+
+.buttons button {
+    font-size: 1.5rem;
+    width: 100%;
+    border-radius: 0;
+}
+
+.item input {
+
+}

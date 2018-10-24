@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 
 @Component({
     selector: 'app-main-menu',
@@ -8,7 +7,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class MainMenuComponent implements OnInit {
 
-    public items: MenuItem[];
+    public items: any[];
 
     constructor() {}
 
