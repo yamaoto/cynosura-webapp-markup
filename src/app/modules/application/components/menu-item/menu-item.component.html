@@ -1,0 +1,6 @@
+<div class="menu-item" [ngClass]="{'active': isActive(item.route), 'folder': item.items}">
+    <a [routerLink]="normalize(item.route)" >{{item.name}}</a>
+    <div class="sub-items" *ngIf="item.items">
+        <app-menu-item *ngFor="let item of item.items" [item]="item"></app-menu-item>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, NgZone } from '@angular/core';
+import { Component, OnInit, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
 import * as axios from 'axios';
 
 @Component({
@@ -6,12 +6,13 @@ import * as axios from 'axios';
   templateUrl: './front-home.component.html',
   styleUrls: ['./front-home.component.less']
 })
-export class FrontHomeComponent implements OnInit, AfterViewInit {
+export class FrontHomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   noise = 'https://media.giphy.com/media/5H8bRxo2JgskE/giphy.gif';
   giphyCollection: any[];
   giphyPosition = 0;
   giphyCurrent: string;
+  timeout: number;
 
   constructor(private zone: NgZone) { }
 
@@ -21,6 +22,10 @@ export class FrontHomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.getNextGif();
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.timeout);
   }
 
   scrollToElement($element): void {
@@ -34,9 +39,10 @@ export class FrontHomeComponent implements OnInit, AfterViewInit {
       this.giphyPosition++;
     }
     return new Promise((resolve) => {
-      setTimeout(() => resolve(), 500);
+      this.timeout = setTimeout(() => resolve(), 500);
     });
   }
+
   getNextGif() {
     this.loadGiphy()
       .then(() => {
@@ -45,7 +51,7 @@ export class FrontHomeComponent implements OnInit, AfterViewInit {
       })
       .then(() => {
         this.zone.run(() => this.giphyCurrent = this.giphyCollection[this.giphyPosition].images.original.url);
-        setTimeout(() => this.getNextGif(), 5000);
+        this.timeout = setTimeout(() => this.getNextGif(), 5000);
       });
   }
 

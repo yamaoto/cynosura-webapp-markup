@@ -4,7 +4,6 @@ import { OverviewComponent } from './overview.component';
 export const routes: Routes = [
   {
     path: '',
-    component: OverviewComponent,
-    outlet: 'page'
-  }
+    component: OverviewComponent
+  },
 ];

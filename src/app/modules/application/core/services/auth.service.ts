@@ -9,9 +9,11 @@ import { AuthStateModel } from '../models/auth-state.model';
 import { AuthTokenModel } from '../models/auth-tokens.model';
 import { LoginModel } from '../models/login.model';
 import { RefreshGrantModel } from '../models/refresh-grant.model';
+import { writeError } from 'src/app/core/logger';
 
 @Injectable()
 export class AuthService {
+    key = Symbol.for('auth-tokens');
     state$: Observable<AuthStateModel>;
     tokens$: Observable<AuthTokenModel>;
     loggedIn$: Observable<boolean>;
@@ -54,38 +56,48 @@ export class AuthService {
         return this.state.value.tokens;
     }
 
+    retrieveTokens(): AuthTokenModel {
+        const tokensString = localStorage.getItem(this.key.toString());
+        const tokensModel = tokensString ? JSON.parse(tokensString) : null;
+        return tokensModel;
+    }
+
     private getTokens(data: RefreshGrantModel | LoginModel, grantType: string): Observable<any> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
         const options = { headers: headers };
 
-        Object.assign(data, { grant_type: grantType, scope: 'openid offline_access' });
+        const sendData = {
+            ...data,
+            grant_type: grantType,
+            scope: 'openid offline_access'
+        };
 
-        let params = new HttpParams();
-        Object.keys(data)
-            .forEach((key) => params = params.set(key, (<any> data)[key]));
+        const params = Object.keys(sendData)
+            .reduce((accum, key) => accum.set(key, sendData[key]), new HttpParams());
         return this.httpClient.post<AuthTokenModel>(`/connect/token`, params.toString(), options)
             .pipe(tap((tokens: AuthTokenModel) => {
                 this.storeToken(tokens);
                 this.updateState({ authReady: true, tokens });
+            }))
+            .pipe(catchError((error) => {
+                writeError('AuthService.getTokens', error);
+                throw error;
             }));
     }
 
     private storeToken(tokens: AuthTokenModel): void {
         const previousTokens = this.retrieveTokens();
-        if (previousTokens !== null && tokens.refresh_token === null) {
-            tokens.refresh_token = previousTokens.refresh_token;
+        const storeTokens = {
+            ...tokens
+        };
+        if (!tokens.refresh_token && previousTokens && previousTokens.refresh_token) {
+            storeTokens.refresh_token = previousTokens.refresh_token;
         }
-        localStorage.setItem('auth-tokens', JSON.stringify(tokens));
-    }
-
-    private retrieveTokens(): AuthTokenModel {
-        const tokensString = localStorage.getItem('auth-tokens');
-        const tokensModel: AuthTokenModel = tokensString === null ? null : JSON.parse(tokensString);
-        return tokensModel;
+        localStorage.setItem(this.key.toString(), JSON.stringify(storeTokens));
     }
 
     private removeToken(): void {
-        localStorage.removeItem('auth-tokens');
+        localStorage.removeItem(this.key.toString());
     }
 
     private updateState(newState: AuthStateModel): void {

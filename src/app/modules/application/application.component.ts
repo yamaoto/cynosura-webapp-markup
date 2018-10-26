@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-application',
@@ -10,9 +11,12 @@ export class ApplicationComponent implements OnInit, OnDestroy {
   styleId = 'application-style';
   loading = true;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.authService.init();
     this.loadStyles();
   }
 

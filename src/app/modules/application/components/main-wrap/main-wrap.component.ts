@@ -16,10 +16,13 @@ export class MainWrapComponent implements OnInit, AfterViewInit, AfterContentIni
   endSticky = false;
   endStickyY = 0;
 
-  constructor(private element: ElementRef) { }
+  constructor(
+    private element: ElementRef,
+  ) { }
 
   ngOnInit() {
   }
+
   ngAfterViewInit() {
   }
 

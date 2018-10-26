@@ -18,9 +18,7 @@ export class FrontComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.load = {
       skeleton: 'skeleton-bundle',
-      // cookieconsent: 'cookieconsent-bundle'
     };
-    console.log('this.cookieConsentService', this.cookieConsentService);
   }
 
   ngAfterViewInit(): void {

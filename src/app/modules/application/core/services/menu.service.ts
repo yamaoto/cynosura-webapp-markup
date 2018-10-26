@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Menu } from '../models/menu.model';
+import { MenuItem } from '../models/menu.model';
 
 @Injectable()
 export class MenuService {
@@ -9,8 +9,8 @@ export class MenuService {
 
     constructor(private httpClient: HttpClient) { }
 
-    getMenu(): Promise<Menu> {
-        return this.httpClient.get<Menu>(this.menuUrl)
+    getMenu(): Promise<MenuItem> {
+        return this.httpClient.get<MenuItem>(this.menuUrl)
             .toPromise();
     }
 }

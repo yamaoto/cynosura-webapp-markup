@@ -29,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const tokens = this.authService.tokens();
-        if (tokens !== null) {
+        if (tokens) {
             request = this.addToken(request, tokens.access_token);
         }
         return next.handle(request)
@@ -37,7 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 (err: any) => {
                     if (err instanceof HttpErrorResponse) {
                         const httpError = err as HttpErrorResponse;
-                        if (httpError.status === 400 && tokens !== null) {
+                        if (httpError.status === 400 && tokens) {
                             return this.handle400Error(err);
                         }
                         if (httpError.status === 401) {

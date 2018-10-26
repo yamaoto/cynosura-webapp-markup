@@ -6,24 +6,26 @@
         </div>
     </div>
     <div class="login-inner">
-        <h2>LOGIN</h2>
-        <div class="login-inner-wrap">
-            <div class="form">
-                <div class="item">
-                    <mat-form-field>
-                        <input matInput placeholder="Username">
-                    </mat-form-field>
-                </div>
-                <div class="item">
-                    <mat-form-field>
-                        <input type="password" matInput placeholder="Password">
-                    </mat-form-field>
+        <form (ngSubmit)="login()" [formGroup]="form">
+            <h2>LOGIN</h2>
+            <div class="login-inner-wrap">
+                <div class="form">
+                    <div class="item">
+                        <mat-form-field>
+                            <input matInput placeholder="Username" formControlName="username"required autofocus>
+                        </mat-form-field>
+                    </div>
+                    <div class="item">
+                        <mat-form-field>
+                            <input type="password" formControlName="password" matInput placeholder="Password" required>
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="buttons">
-            <button mat-flat-button color="primary">Button</button>
-        </div>
+            <div class="buttons">
+                <button mat-flat-button color="primary">Login</button>
+            </div>
+        </form>
     </div>
     <div class="forgot-password">
         <a>Forgon password?</a>
