@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material';
+import { RoleService } from '../../role-core/role.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-role',
@@ -18,6 +20,7 @@ export class RoleComponent implements OnInit {
   columns = ['name', 'weight', 'symbol', 'position'];
   items = new MatTableDataSource([
     {
+      id: 1,
       position: 1,
       name: 'Hydrogen',
       weight: 1.0079,
@@ -25,6 +28,7 @@ export class RoleComponent implements OnInit {
       description: `Hydrogen is a chemical element with symbol H and atomic number 1. With a standard
           atomic weight of 1.008, hydrogen is the lightest element on the periodic table.`
     }, {
+      id: 2,
       position: 2,
       name: 'Helium',
       weight: 4.0026,
@@ -33,6 +37,7 @@ export class RoleComponent implements OnInit {
           colorless, odorless, tasteless, non-toxic, inert, monatomic gas, the first in the noble gas
           group in the periodic table. Its boiling point is the lowest among all the elements.`
     }, {
+      id: 3,
       position: 3,
       name: 'Lithium',
       weight: 6.941,
@@ -41,6 +46,7 @@ export class RoleComponent implements OnInit {
           silvery-white alkali metal. Under standard conditions, it is the lightest metal and the
           lightest solid element.`
     }, {
+      id: 4,
       position: 4,
       name: 'Beryllium',
       weight: 9.0122,
@@ -49,6 +55,7 @@ export class RoleComponent implements OnInit {
           relatively rare element in the universe, usually occurring as a product of the spallation of
           larger atomic nuclei that have collided with cosmic rays.`
     }, {
+      id: 5,
       position: 5,
       name: 'Boron',
       weight: 10.811,
@@ -57,6 +64,7 @@ export class RoleComponent implements OnInit {
           by cosmic ray spallation and supernovae and not by stellar nucleosynthesis, it is a
           low-abundance element in the Solar system and in the Earth's crust.`
     }, {
+      id: 6,
       position: 6,
       name: 'Carbon',
       weight: 12.0107,
@@ -72,6 +80,7 @@ export class RoleComponent implements OnInit {
       description: `Nitrogen is a chemical element with symbol N and atomic number 7. It was first
           discovered and isolated by Scottish physician Daniel Rutherford in 1772.`
     }, {
+      id: 8,
       position: 8,
       name: 'Oxygen',
       weight: 15.9994,
@@ -80,6 +89,7 @@ export class RoleComponent implements OnInit {
            the chalcogen group on the periodic table, a highly reactive nonmetal, and an oxidizing
            agent that readily forms oxides with most elements as well as with other compounds.`
     }, {
+      id: 9,
       position: 9,
       name: 'Fluorine',
       weight: 18.9984,
@@ -88,6 +98,7 @@ export class RoleComponent implements OnInit {
           lightest halogen and exists as a highly toxic pale yellow diatomic gas at standard
           conditions.`
     }, {
+      id: 10,
       position: 10,
       name: 'Neon',
       weight: 20.1797,
@@ -97,14 +108,30 @@ export class RoleComponent implements OnInit {
           two-thirds the density of air.`
     },
   ]);
+  pageIndex: 0;
+  pageSize: 20;
+  totalItems: number;
 
-  constructor() { }
+  constructor(
+    private roleService: RoleService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
+    // this.roleService.getRoles(this.pageIndex, this.pageSize)
   }
 
   applyFilter(filterValue: string) {
     this.items.filter = filterValue.trim().toLowerCase();
+  }
+
+  open(id: any) {
+    this.router.navigate([id], { relativeTo: this.route });
   }
 }
 
